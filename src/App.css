@@ -1,4 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
+  themes: light --default, denman-street --prefersdark, cupcake;
 }
+/*
+[data-theme="denman-street"] {
+  --color-base-content:#ffffff;
+}
+*/

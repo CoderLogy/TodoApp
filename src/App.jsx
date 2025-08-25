@@ -3,12 +3,12 @@ import './App.css'
 import Screen from './components/BaseScreen'
 import useLocalStorageState from 'use-local-storage-state'
 
-
 const App = () => {
   const [todos, setTodos] = useLocalStorageState("todos",{ defaultValue: []});
   const [newTodo, setNewTodo] = useLocalStorageState("newTodo",{ defaultValue: "" })
   const [showAlert, setShowAlert] = useLocalStorageState("showAlert",{ defaultValue: false })
-  const [color, setColor] = useLocalStorageState("color", { defaultValue: "#F2BFA4 " })
+  const [bgcolor, setColorBg] = useLocalStorageState("bgcolor", { defaultValue: "#F2BFA4" })
+
   
   useEffect(() => {
     if (showAlert) {
@@ -47,7 +47,7 @@ const App = () => {
   }
   return (
     <>
-      <div className="app min-h-screen flex items-center justify-center transition-colors duration-300" style={{backgroundColor:color}}>
+      <div className="app min-h-screen flex items-center justify-center" style={{backgroundColor:bgcolor, transition:"background-color 1.5s ease-in"}}>
         <Screen todos={todos}
           setTodos={setTodos}
           newTodo={newTodo}
@@ -57,7 +57,8 @@ const App = () => {
           addTodo={addTodo}
           editTodo={editTodo}
           deleteTodo={deleteTodo}
-          setColor={setColor}
+          setColorBg={setColorBg}
+          bgcolor={bgcolor}
         />
 
       </div>
