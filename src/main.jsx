@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { PostHogProvider } from 'posthog-js/react'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <SpeedInsights/>
     <PostHogProvider
       apiKey={import.meta.env.VITE_PUBLIC_POSTHOG_KEY}
       options={{
