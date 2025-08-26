@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ReactSortable } from "react-sortablejs"
 import { HexColorPicker } from 'react-colorful'
 import useLocalStorageState from 'use-local-storage-state'
@@ -23,8 +23,8 @@ function isColorDark(hexColor) {
     return luminance < 0.5; // true if color is dark
   }
 
-  React.useEffect(() => {
-    const theme = isColorDark(fgcolor) ? "denman-street" : "cupcake";
+  useEffect(() => {
+    const theme = isColorDark(fgcolor,) ? "denman-street" : "cupcake";
     document.documentElement.setAttribute("data-theme", theme);
   }, [fgcolor]);
   

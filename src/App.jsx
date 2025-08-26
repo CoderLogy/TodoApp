@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './App.css'
-import Screen from './components/BaseScreen'
+import Screen from './components/Screen'
 import useLocalStorageState from 'use-local-storage-state'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       }, 2300)
       return () => clearTimeout(timer)
     }
-  }, [showAlert])
+  }, [setShowAlert, showAlert])
   
   const addTodo = () => {
     if (newTodo.trim() != "") {
