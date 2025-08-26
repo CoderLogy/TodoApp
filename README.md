@@ -49,11 +49,13 @@ Background color is customizable and smoothly animated
 Main UI is handled by the Screen component
 
 📁 File Structure
-📦 src
- ┣ 📂components
- ┃ ┗ 📄 Screen.jsx
- ┣ 📄 App.jsx
- ┣ 📄 App.css
+
+src/
+  components/
+    Screen.jsx
+  App.jsx
+  App.css
+
 
 📜 License
 
