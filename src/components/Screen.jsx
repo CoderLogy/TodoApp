@@ -2,9 +2,13 @@ import React, { useEffect } from 'react'
 import { ReactSortable } from "react-sortablejs"
 import { HexColorPicker } from 'react-colorful'
 import useLocalStorageState from 'use-local-storage-state'
-
-const Screen = ({ todos, setTodos, newTodo, setNewTodo, addTodo, editTodo, deleteTodo, showAlert, handleCheckboxes, setColorBg, bgcolor}) => {
+import FontPicker from 'react-fontpicker-ts'
+import 'react-fontpicker-ts/dist/index.css';
+import './fontChanger.css'
+const Screen = ({ todos, setTodos, newTodo, setNewTodo, addTodo, editTodo, deleteTodo, showAlert, handleCheckboxes, setColorBg, bgcolor, font, setFont}) => {
 const [fgcolor, setColorFg] = useLocalStorageState("fgcolor", { defaultValue: "#F5E7D4" })
+
+
 function isColorDark(hexColor) {
     // Remove '#' if present
     const hex = hexColor.replace("#", "");
@@ -28,8 +32,9 @@ function isColorDark(hexColor) {
     document.documentElement.setAttribute("data-theme", theme);
   }, [fgcolor]);
   
+  //TODO: Add custom-theme changing functionality
   return (
-    <div className="screen shadow-lg shadow-zinc-600 rounded-lg" style={{ backgroundColor: fgcolor, transition: "background-color 5.6s ease"}}>
+    <div className="screen shadow-lg shadow-zinc-600 rounded-lg" style={{ backgroundColor: fgcolor,transition: "background-color 5.6s ease"}}>
       {showAlert && <div role="alert" className="alert mt-2">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info h-6 w-6 shrink-0">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -71,6 +76,12 @@ function isColorDark(hexColor) {
             <HexColorPicker color={fgcolor} onChange={setColorFg}/>
             <button className="btn my-2" onClick={() => { setColorBg("#F2BFA4"); setColorFg("#F5E7D4") }}>Revert</button>
             </div>
+            <FontPicker
+              autoLoad
+              defaultValue={font}
+              value={(font) => setFont(font)
+              }
+            />
             <div className="modal-action">
               <label htmlFor="my_modal_6" className="btn">Close!</label>
             </div>

@@ -8,7 +8,7 @@ const App = () => {
   const [newTodo, setNewTodo] = useLocalStorageState("newTodo",{ defaultValue: "" })
   const [showAlert, setShowAlert] = useLocalStorageState("showAlert",{ defaultValue: false })
   const [bgcolor, setColorBg] = useLocalStorageState("bgcolor", { defaultValue: "#F2BFA4" })
-
+  const [font, setFont] = useLocalStorageState("font", { defaultValue: "Arial" })
   
   useEffect(() => {
     if (showAlert) {
@@ -47,7 +47,7 @@ const App = () => {
   }
   return (
     <>
-      <div className="app min-h-screen flex items-center justify-center" style={{backgroundColor:bgcolor, transition:"background-color 1.5s ease-in"}}>
+      <div className="app min-h-screen flex items-center justify-center" style={{backgroundColor:bgcolor,fontFamily:font,transition:"background-color 1.5s ease-in"}}>
         <Screen todos={todos}
           setTodos={setTodos}
           newTodo={newTodo}
@@ -59,6 +59,8 @@ const App = () => {
           deleteTodo={deleteTodo}
           setColorBg={setColorBg}
           bgcolor={bgcolor}
+          font={font}
+          setFont={setFont}
         />
 
       </div>

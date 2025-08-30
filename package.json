@@ -17,6 +17,7 @@
     "react": "^19.1.1",
     "react-colorful": "^5.6.1",
     "react-dom": "^19.1.1",
+    "react-fontpicker-ts": "^1.2.0",
     "react-sortablejs": "^6.1.4",
     "sortablejs": "^1.15.6",
     "tailwindcss": "^4.1.12",
