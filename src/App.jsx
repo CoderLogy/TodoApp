@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './App.css'
 import Screen from './components/Screen'
 import useLocalStorageState from 'use-local-storage-state'
@@ -6,10 +6,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-//gsap.to(element, {
-  //duration: 1,
-  //scrambleText: "THIS IS NEW TEXT"
-//});
 
 gsap.registerPlugin(useGSAP, ScrambleTextPlugin);
 
@@ -19,7 +15,8 @@ const App = () => {
   const [showAlert, setShowAlert] = useLocalStorageState("showAlert",{ defaultValue: false })
   const [bgcolor, setColorBg] = useLocalStorageState("bgcolor", { defaultValue: "#F2BFA4" })
   const [font, setFont] = useLocalStorageState("font", { defaultValue: "Arial" })
-  
+  const lastAddedId = useRef(null)
+
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
@@ -28,10 +25,12 @@ const App = () => {
       return () => clearTimeout(timer)
     }
   }, [setShowAlert, showAlert])
-  
+
   const addTodo = () => {
     if (newTodo.trim() != "") {
-      setTodos([...todos, { id: Date.now(), todo: newTodo.trim(), isCompleted: false }])
+      const newId = Date.now()
+      lastAddedId.current = newId
+      setTodos([...todos, { id: newId, todo: newTodo.trim(), isCompleted: false }])
       setNewTodo("")
       setShowAlert(false)
     }
@@ -71,6 +70,7 @@ const App = () => {
           bgcolor={bgcolor}
           font={font}
           setFont={setFont}
+          lastAddedId={lastAddedId}
         />
 
       </div>
