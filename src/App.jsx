@@ -2,6 +2,16 @@ import React, { useEffect } from 'react'
 import './App.css'
 import Screen from './components/Screen'
 import useLocalStorageState from 'use-local-storage-state'
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+//gsap.to(element, {
+  //duration: 1,
+  //scrambleText: "THIS IS NEW TEXT"
+//});
+
+gsap.registerPlugin(useGSAP, ScrambleTextPlugin);
 
 const App = () => {
   const [todos, setTodos] = useLocalStorageState("todos",{ defaultValue: []});

@@ -41,9 +41,9 @@ function isColorDark(hexColor) {
         </svg>
         <span>Please Type a todo before adding.</span>
       </div>}
-      <div className="w-full max-w-sm max-h-screen sm:max-w-md md:max-w-lg sm:w-120 min-h-[35rem] sm:min-h-[45rem] md:min-h-[50rem] overflow-y-auto mx-auto p-4 sm:p-8 ">
-        <h1 className="text-center text-2xl my-2">My Todo</h1>
-        <div className="flex flex-col ml- sm:flex-row justify-around my-5 gap-2.5">
+      <div className="w-full min-w-xl max-w-2xl min-h-[35vh] sm:min-h-[45vh] md:min-h-[50vh] overflow-y-auto mx-auto p-8">
+        <h1 className="text-center text-2xl my-2 pb-4">My Todo</h1>
+        <div className="flex flex-col sm:flex-row justify-around my-5 gap-2.5">
           <input type="text" placeholder="Add a new todo" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") addTodo(newTodo) }} className="input input-md p-5 text-[16px] focus:shadow-md border-0 focus:outline-none" />
           <button className="w-80 sm:w-20 sm:mx-2 btn" onClick={addTodo}>Save</button>
         </div>
@@ -76,12 +76,7 @@ function isColorDark(hexColor) {
             <HexColorPicker color={fgcolor} onChange={setColorFg}/>
             <button className="btn my-2" onClick={() => { setColorBg("#F2BFA4"); setColorFg("#F5E7D4") }}>Revert</button>
             </div>
-            <FontPicker
-              autoLoad
-              defaultValue={font}
-              value={(font) => setFont(font)
-              }
-            />
+            <FontPicker autoLoad defaultValue={font} value={(font) => setFont(font)} />
             <div className="modal-action">
               <label htmlFor="my_modal_6" className="btn">Close!</label>
             </div>
@@ -92,8 +87,8 @@ function isColorDark(hexColor) {
           {todos.length > 0 && (
             <ReactSortable list={todos} setList={setTodos} animation={150}>
               {todos.map(todo => (
-                  <div key={todo.id} className="todos flex text-md sm:text-xl my-7 justify-between">
-                    <label className="flex items-center space-x-2 mx-7 lg:mx-6">
+                  <div key={todo.id} className="todos flex  w-full text-md sm:text-xl my-7 justify-between">
+                    <label className="flex items-center flex-1 min-w-0 space-x-2 mx-7 lg:mx-6">
                       <input type="checkbox" checked={todo.isCompleted} onChange={() => handleCheckboxes(todo.id)} className="checkbox checkbox-md sm:checkbox-lg" />
                       <span className={`mx-1.5 -mt-0.5 break-all ${todo.isCompleted ? "line-through text-gray-400" : ""}`}>{todo.todo}</span>
                     </label>
