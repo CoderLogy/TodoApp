@@ -1,75 +1,141 @@
 .fontpicker,
 .fontpicker * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker {
-    border: 1px solid;
-    border-radius: 2rem;
-    margin-top: 1rem;
-    display: block;
-    position: relative;
-    background: #eee;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  position: relative;
+  background: #ffffff;
+  min-height: 45px;
+  width: 100%;
+  overflow: visible;
+}
+
+.fontpicker::before {
+  display: none;
 }
 
 .fontpicker__preview {
-    /* ref: https://stackoverflow.com/a/53336754 */
-    -webkit-filter: invert(35%) sepia(98%) saturate(535%) hue-rotate(203deg) brightness(108%) contrast(109%);
-    filter: invert(35%) sepia(98%) saturate(535%) hue-rotate(203deg) brightness(108%) contrast(109%);
+  padding: 0.75rem 1rem ;
+  color: #1f2937 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex !important;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  min-height: 35px !important;
+  line-height: 1.25;
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+  margin: 5px;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__search {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    padding: 0 10px;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: #f5f5f5;
-    color: #646cff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: transparent;
+  color: #1f2937;
+  border: none;
+  font-family: inherit;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__search:focus {
-    cursor: text;
-    opacity: 1;
+  cursor: text;
+  opacity: 1;
+  outline: none;
+  background-color: #f3f4f6;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__popout {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    border: 1px solid;
-    max-height: calc(12em + 1px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 2;
-    background: #f5f5f5;
-    opacity: 0;
-    transform: scaleY(0.001);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 2px solid #d1d5db;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 50;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleY(0.001);
+  transform-origin: top;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fontpicker__popout * {
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__popout.fontpicker__active {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
 .fontpicker__option {
-    -webkit-filter: invert(35%) sepia(98%) saturate(535%) hue-rotate(203deg) brightness(108%) contrast(109%);
-    filter: invert(35%) sepia(98%) saturate(535%) hue-rotate(203deg) brightness(108%) contrast(109%);
+  padding: 0.75rem 1rem;
+  color: #1f2937 !important;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.1s ease;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f3f4f6;
+  filter: none !important;
+  -webkit-filter: none !important;
+  background-color: #ffffff !important;
+  display: block !important;
+}
+
+.fontpicker__option:hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__option.selected {
-    background: #9498ff;
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 .fontpicker__nomatches {
-    height: 2em;
-    line-height: 2em;
-    background: #f5f5f5;
-    text-align: center;
-    color: #646cff;
+  height: 2.5em;
+  line-height: 2.5em;
+  background: #ffffff;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
