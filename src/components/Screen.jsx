@@ -28,6 +28,7 @@ const Screen = ({
   const [fgcolor, setColorFg] = useLocalStorageState("fgcolor", {
     defaultValue: "#F5E7D4",
   });
+  const completedDeletions = useRef(new Set());
   const todoRefs = useRef({});
 
   useEffect(() => {
@@ -121,7 +122,7 @@ const Screen = ({
           <span>Please Type a todo before adding.</span>
         </div>
       )}
-      <div className="w-full min-w-xl max-w-2xl min-h-[35vh] sm:min-h-[45vh] md:min-h-[50vh] overflow-y-auto mx-auto p-8">
+      <div className="w-full min-w-md md:min-w-xl max-w-2xl min-h-[35vh] sm:min-h-[45vh] md:min-h-[50vh] overflow-y-auto mx-auto p-8">
         <h1 className="text-center text-2xl my-2 pb-4">My Todo</h1>
         <div className="flex flex-col sm:flex-row justify-around my-5 gap-2.5">
           <input
@@ -132,9 +133,9 @@ const Screen = ({
             onKeyDown={(e) => {
               if (e.key === "Enter") addTodo(newTodo);
             }}
-            className="input input-md p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
+            className="input input-lg w-full md:w-95 p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
           />
-          <button className="w-80 sm:w-20 sm:mx-2 btn" onClick={addTodo}>
+          <button className="w-full md:w-20 h-12 btn" onClick={addTodo}>
             Save
           </button>
         </div>
@@ -157,7 +158,7 @@ const Screen = ({
         </label>
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal" role="dialog">
-          <div className="modal-box bg-base-100 ">
+          <div className="modal-box bg-base-100 h-[90vh]">
             <h3 className="text-lg sm:text-lg font-bold">Settings</h3>
             <div className="pallete flex flex-col items-center space-y-2 ">
               <p className="py-4">Pick a Background Color: </p>
@@ -188,7 +189,9 @@ const Screen = ({
         </div>
         <div className="todos">
           {todos.length == 0 && (
-            <div className="mx-10 my-10">No Todos to display</div>
+            <div className="text-center py-8 text-gray-600">
+              No Todos to display
+            </div>
           )}
           {todos.length > 0 && (
             <ReactSortable list={todos} setList={setTodos} animation={150}>
