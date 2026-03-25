@@ -124,7 +124,7 @@ const Screen = ({
       )}
       <div className="w-full min-w-md md:min-w-xl max-w-2xl min-h-[35vh] sm:min-h-[45vh] md:min-h-[50vh] overflow-y-auto mx-auto p-8">
         <h1 className="text-center text-2xl my-2 pb-4">My Todo</h1>
-        <div className="flex flex-col sm:flex-row justify-around my-5 gap-2.5">
+        <div className="flex flex-col sm:flex-row justify-around my-4 gap-2">
           <input
             type="text"
             placeholder="Add a new todo"
@@ -133,7 +133,7 @@ const Screen = ({
             onKeyDown={(e) => {
               if (e.key === "Enter") addTodo(newTodo);
             }}
-            className="input input-lg w-full md:w-95 p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
+            className="input input-lg flex-grow max-w-[calc(100%-8rem)] p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
           />
           <button className="w-full md:w-20 h-12 btn" onClick={addTodo}>
             Save
