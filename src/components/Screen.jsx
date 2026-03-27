@@ -133,9 +133,9 @@ const Screen = ({
             onKeyDown={(e) => {
               if (e.key === "Enter") addTodo(newTodo);
             }}
-            className="input input-lg flex-grow max-w-[calc(100%-8rem)] p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
+            className="input input-lg flex-grow w-full md:max-w-[calc(100%-8rem)] p-5 text-[16px] focus:shadow-md border-0 focus:outline-none"
           />
-          <button className="w-full md:w-20 h-12 btn" onClick={addTodo}>
+          <button className="sm:w-20 h-12 btn" onClick={addTodo}>
             Save
           </button>
         </div>
